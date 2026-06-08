@@ -70,8 +70,8 @@ class ClienteController extends Controller
      */
     public function edit(string $id)
     {
-        $clientes = Cliente::findOrFail($id);
-        return view('clientes.edit',compact('cliente'));
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
