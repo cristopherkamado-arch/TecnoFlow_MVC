@@ -1,0 +1,346 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #F8F9FA;
+}
+
+/* ── SIDEBAR ── */
+#sidebar {
+    width: 220px;
+    min-height: 100vh;
+    background-color: #0D6EFD;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar .sidebar-brand {
+    padding: 1.5rem 1.25rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+#sidebar .sidebar-brand h5 {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+#sidebar .sidebar-brand small {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+}
+
+#sidebar .sidebar-label {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 1rem 1.25rem 0.4rem;
+}
+
+#sidebar .nav-link {
+    color: rgba(255,255,255,0.85);
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    margin: 0.15rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+#sidebar .nav-link:hover {
+    background-color: rgba(255,255,255,0.15);
+    color: #FFFFFF;
+}
+
+#sidebar .nav-link.active {
+    background-color: #FFFFFF;
+    color: #0D6EFD;
+    font-weight: 500;
+}
+
+#sidebar .nav-link i {
+    width: 18px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+#sidebar .sidebar-footer {
+    margin-top: auto;
+    padding: 1rem 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+#sidebar .sidebar-footer .nav-link {
+    margin: 0;
+}
+
+/* ── NAVBAR ── */
+#navbar {
+    margin-left: 220px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E9ECEF;
+    padding: 0.75rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navbar .navbar-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #343A40;
+    margin: 0;
+}
+
+#navbar .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#navbar .btn-notification {
+    background: none;
+    border: none;
+    color: #6C757D;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0.25rem;
+}
+
+#navbar .notification-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #0D6EFD;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#navbar .user-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #0D6EFD;
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar .user-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #343A40;
+    margin: 0;
+    line-height: 1.2;
+}
+
+#navbar .user-role {
+    font-size: 0.75rem;
+    color: #6C757D;
+    margin: 0;
+}
+
+#navbar .btn-logout {
+    background-color: #0D6EFD;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background-color 0.2s ease;
+}
+
+#navbar .btn-logout:hover {
+    background-color: #0B5ED7;
+    color: #FFFFFF;
+}
+
+/* ── CONTENIDO PRINCIPAL ── */
+#main-content {
+    margin-left: 220px;
+    padding: 1.5rem;
+    min-height: calc(100vh - 60px);
+}
+
+/* ── TARJETAS DE MÉTRICAS ── */
+.metric-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #E9ECEF;
+    padding: 1.25rem;
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+}
+
+.metric-card .metric-label {
+    font-size: 0.85rem;
+    color: #6C757D;
+    margin: 0;
+}
+
+.metric-card .metric-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #343A40;
+    margin: 0.25rem 0;
+}
+
+.metric-card .metric-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.metric-card .metric-trend {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+/* ── TABLAS ── */
+.table-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #E9ECEF;
+    padding: 1.25rem;
+}
+
+.table thead th {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #6C757D;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #E9ECEF;
+}
+
+.table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #F8F9FA;
+}
+
+.table tbody td {
+    font-size: 0.88rem;
+    color: #343A40;
+    vertical-align: middle;
+}
+
+/* ── BADGES DE ESTADO ── */
+.badge-pendiente {
+    background-color: #FFF3CD;
+    color: #856404;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.badge-progreso {
+    background-color: #CFE2FF;
+    color: #084298;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.badge-completado {
+    background-color: #D1E7DD;
+    color: #0A3622;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+/* ── AVATARES DE CLIENTES ── */
+.client-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+/* ── BOTONES DE ACCIÓN ── */
+.btn-action {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+    transform: translateY(-1px);
+}
+
+/* ── AVATARES DE COLORES ── */
+.avatar-color-0 { background-color: #0D6EFD; }
+.avatar-color-1 { background-color: #2E7D32; }
+.avatar-color-2 { background-color: #F9A825; }
+.avatar-color-3 { background-color: #D32F2F; }
+
+/* ── NOMBRE DE CLIENTE ── */
+.client-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #343A40;
+}
+
+/* ── BADGES DE TIPO DE CLIENTE ── */
+.badge-tipo {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+}
+
+.badge-persona {
+    background-color: #CFE2FF;
+    color: #084298;
+}
+
+.badge-empresa {
+    background-color: #D1E7DD;
+    color: #0A3622;
+}

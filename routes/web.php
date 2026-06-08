@@ -19,14 +19,17 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
 
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     // CRUD de Clientes
     Route::resource('clientes', ClienteController::class);
 
     // CRUD de Proyectos
     Route::resource('proyectos', ProyectoController::class);
+
+    // Reportes
+    Route::get('/reportes', function () {
+        return view('reportes');
+    })->name('reportes');
 
 });
