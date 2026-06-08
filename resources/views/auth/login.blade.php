@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecnoFlow MVC - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('path/to/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -182,7 +184,7 @@
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                 <div class="card login-card">
                     <div class="card-body text-center">
-                        <div class="logo-box">⚡</div>
+                        <div class="logo-box"><i class="bi bi-lightning-fill"></i></div>
                         
                         <h1 class="brand-title">TecnoFlow MVC</h1>
                         <p class="brand-subtitle">TecnoSoluciones S.A.</p>
