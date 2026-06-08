@@ -69,22 +69,19 @@
                 <td>{{ $proyecto->fecha_fin ? \Carbon\Carbon::parse($proyecto->fecha_fin)->format('d/m/Y') : '—' }}</td>
                 <td class="text-center">
                     <a href="{{ route('proyectos.show', $proyecto->id) }}"
-                        class="btn btn-info btn-sm me-1">
-                        <i class="fa-solid fa-eye"></i>
+                        class="btn btn-outline-info btn-sm me-1">
+                            <i class="fa-solid fa-eye"></i>
                     </a>
                     <a href="{{ route('proyectos.edit', $proyecto->id) }}"
-                        class="btn btn-warning btn-sm me-1">
-                        <i class="fa-solid fa-pen"></i>
+                        class="btn btn-outline-warning btn-sm me-1">
+                            <i class="fa-solid fa-pen"></i>
                     </a>
-                    <form action="{{ route('proyectos.destroy', $proyecto->id) }}"
-                        method="POST" class="d-inline"
-                        onsubmit="return confirm('¿Estás seguro de eliminar este proyecto?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </form>
+                    <button type="button" class="btn btn-outline-danger btn-sm btn-eliminar"
+                        data-id="{{ $proyecto->id }}"
+                        data-nombre="{{ $proyecto->nombre }}"
+                        data-tipo="proyecto">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                 </td>
             </tr>
             @empty
@@ -110,8 +107,49 @@
 
 </div>
 
-{{-- Script de búsqueda y filtro en tiempo real --}}
+{{-- Modal de confirmación de eliminación --}}
+<div class="modal fade" id="modalEliminar" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-body text-center p-4">
+                <div class="mb-3" style="width: 60px; height: 60px; background-color: #FFEBEE;
+                    border-radius: 50%; display: flex; align-items: center;
+                    justify-content: center; margin: 0 auto;">
+                    <i class="fa-solid fa-trash" style="color: #D32F2F; font-size: 1.5rem;"></i>
+                </div>
+                <h5 class="mb-1" style="font-weight: 500; color: #343A40;">
+                    Confirmar eliminación
+                </h5>
+                <p class="text-muted mb-1" style="font-size: 0.88rem;">
+                    ¿Estás seguro de que deseas eliminar este proyecto?
+                </p>
+                <p class="mb-0" style="font-size: 0.88rem;">
+                    <strong id="nombreEliminar"></strong>
+                </p>
+                <p class="text-muted mt-2" style="font-size: 0.8rem;">
+                    Esta acción no se puede deshacer.
+                </p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center gap-2 pb-4">
+                <button type="button" class="btn btn-secondary d-flex align-items-center gap-2"
+                        data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i> Cancelar
+                </button>
+                <form id="formEliminar" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-trash"></i> Sí, eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Script de búsqueda, filtro y eliminación --}}
 <script>
+    // Búsqueda y filtro en tiempo real
     const buscador = document.getElementById('buscador');
     const filtroEstado = document.getElementById('filtroEstado');
     const filas = document.querySelectorAll('#tablaProyectos tbody tr');
@@ -134,6 +172,24 @@
 
     buscador.addEventListener('input', filtrar);
     filtroEstado.addEventListener('change', filtrar);
+
+    // Manejo de botones eliminar
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.dataset.id;
+            const nombre = this.dataset.nombre;
+            const tipo = this.dataset.tipo;
+            confirmarEliminar(id, nombre, tipo);
+        });
+    });
+
+    // Función para mostrar modal de confirmación
+    function confirmarEliminar(id, nombre, tipo) {
+        document.getElementById('nombreEliminar').textContent = nombre;
+        document.getElementById('formEliminar').action = '/' + tipo + 's/' + id;
+        const modal = new bootstrap.Modal(document.getElementById('modalEliminar'));
+        modal.show();
+    }
 </script>
 
 @endsection
