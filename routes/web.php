@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
     // Reportes
     Route::get('/reportes', function () {
-        return view('reportes');
+        return view('reportes.index');
     })->name('reportes');
 
 });
