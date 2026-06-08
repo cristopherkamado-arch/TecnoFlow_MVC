@@ -12,8 +12,17 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::all();
-        return view('clientes.index', compact('clientes'));
+        $clientes       = Cliente::latest()->paginate(5);
+        $totalClientes  = Cliente::count();
+        $totalEmpresas  = Cliente::where('tipo_cliente', 'empresa')->count();
+        $totalPersonas  = Cliente::where('tipo_cliente', 'persona')->count();
+
+        return view('clientes.index', compact(
+            'clientes',
+            'totalClientes',
+            'totalEmpresas',
+            'totalPersonas'
+        ));
     }
 
     /**
@@ -21,7 +30,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('cliente.create');
+        return view('clientes.create');
     }
 
     /**
