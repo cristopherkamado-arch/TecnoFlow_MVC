@@ -28,8 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('proyectos', ProyectoController::class);
 
     // Reportes
-    Route::get('/reportes', function () {
-        return view('reportes.index');
-    })->name('reportes');
+    Route::get('/reportes', [App\Http\Controllers\ReporteController::class, 'index'])->name('reportes');
+    // Reportes PDF
+    Route::get('/reportes/clientes', [App\Http\Controllers\ReporteController::class, 'clientes'])->name('reportes.clientes');
+    Route::get('/reportes/proyectos', [App\Http\Controllers\ReporteController::class, 'proyectos'])->name('reportes.proyectos');
 
 });
