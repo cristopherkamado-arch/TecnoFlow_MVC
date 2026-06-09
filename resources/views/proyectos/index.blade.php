@@ -17,6 +17,71 @@
     </a>
 </div>
 
+{{-- Tarjetas de métricas --}}
+<div class="row g-3 mb-4">
+
+    {{-- Total Proyectos --}}
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <p class="metric-label">Total Proyectos</p>
+                    <p class="metric-value">{{ $totalProyectos }}</p>
+                </div>
+                <div class="metric-icon" style="background-color: #EBF3FF;">
+                    <i class="fa-solid fa-folder-open" style="color: #0D6EFD;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Pendientes --}}
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <p class="metric-label">Pendientes</p>
+                    <p class="metric-value">{{ $totalPendientes }}</p>
+                </div>
+                <div class="metric-icon" style="background-color: #FFF3CD;">
+                    <i class="fa-solid fa-clock" style="color: #F9A825;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- En Progreso --}}
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <p class="metric-label">En Progreso</p>
+                    <p class="metric-value">{{ $totalEnProgreso }}</p>
+                </div>
+                <div class="metric-icon" style="background-color: #CFE2FF;">
+                    <i class="fa-solid fa-spinner" style="color: #084298;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Completados --}}
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <p class="metric-label">Completados</p>
+                    <p class="metric-value">{{ $totalCompletados }}</p>
+                </div>
+                <div class="metric-icon" style="background-color: #D1E7DD;">
+                    <i class="fa-solid fa-circle-check" style="color: #2E7D32;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 {{-- Tabla de proyectos --}}
 <div class="table-card">
 

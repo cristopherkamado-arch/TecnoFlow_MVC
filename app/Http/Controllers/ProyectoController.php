@@ -13,8 +13,19 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = Proyecto::with('cliente')->latest()->paginate(5);
-        return view('proyectos.index', compact('proyectos'));
+        $proyectos          = Proyecto::with('cliente')->latest()->paginate(5);
+        $totalProyectos     = Proyecto::count();
+        $totalPendientes    = Proyecto::where('estado', 'pendiente')->count();
+        $totalEnProgreso    = Proyecto::where('estado', 'en progreso')->count();
+        $totalCompletados   = Proyecto::where('estado', 'completado')->count();
+
+        return view('proyectos.index', compact(
+            'proyectos',
+            'totalProyectos',
+            'totalPendientes',
+            'totalEnProgreso',
+            'totalCompletados'
+        ));
     }
 
     /**
