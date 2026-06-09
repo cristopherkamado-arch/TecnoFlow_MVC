@@ -39,6 +39,7 @@
             justify-content: center;
             margin: 0 auto 30px;
             font-size: 40px;
+            color: white;
         }
 
         .brand-title {
