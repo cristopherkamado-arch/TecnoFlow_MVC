@@ -53,10 +53,18 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('reportes') }}"
-                    class="nav-link {{ request()->routeIs('reportes') ? 'active' : '' }}">
+                class="nav-link {{ request()->routeIs('reportes') ? 'active' : '' }}">
                     <i class="fa-solid fa-file-pdf"></i> Reportes
                 </a>
             </li>
+            @if(Auth::user()->role === 'admin')
+            <li class="nav-item">
+                <a href="{{ route('usuarios.index') }}"
+                class="nav-link {{ request()->routeIs('usuarios.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-user-gear"></i> Usuarios
+                </a>
+            </li>
+            @endif
         </ul>
 
         <div class="sidebar-footer">

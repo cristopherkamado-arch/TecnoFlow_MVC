@@ -33,4 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/reportes/clientes', [App\Http\Controllers\ReporteController::class, 'clientes'])->name('reportes.clientes');
     Route::get('/reportes/proyectos', [App\Http\Controllers\ReporteController::class, 'proyectos'])->name('reportes.proyectos');
 
+    // Usuarios
+    Route::get('/usuarios', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios/create', [App\Http\Controllers\UsuarioController::class, 'create'])->name('usuarios.create');
+    Route::post('/usuarios', [App\Http\Controllers\UsuarioController::class, 'store'])->name('usuarios.store');
+    Route::delete('/usuarios/{id}', [App\Http\Controllers\UsuarioController::class, 'destroy'])->name('usuarios.destroy');
 });
