@@ -246,7 +246,7 @@
                                         Recordarme
                                     </label>
                                 </div>
-                                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                                <a href="{{ route('password.forgot') }}" class="forgot-password">¿Olvidaste tu contraseña?</a>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-login w-100">Iniciar sesión</button>

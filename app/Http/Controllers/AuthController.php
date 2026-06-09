@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -46,5 +48,62 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login')->with('success', 'Sesión cerrada correctamente.');
+    }
+
+    /**
+     * Muestra el formulario para solicitar recuperación de contraseña.
+     */
+    public function showForgotForm()
+    {
+        return view('auth.forgot-password');
+    }
+
+    /**
+     * Verifica si el email existe en la base de datos.
+     */
+    public function verifyEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if ($user) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Email verificado correctamente'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'El correo electrónico no está registrado en el sistema'
+        ], 404);
+    }
+
+    /**
+     * Actualiza la contraseña del usuario directamente.
+     */
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'password.confirmed' => 'Las contraseñas no coinciden.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if ($user) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return redirect()->route('login')->with('success', 'Contraseña actualizada correctamente. Por favor, inicia sesión con tu nueva contraseña.');
+        }
+
+        return back()->withErrors(['email' => 'No se encontró el usuario.']);
     }
 }

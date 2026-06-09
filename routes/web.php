@@ -15,6 +15,11 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Rutas de recuperación de contraseña
+Route::get('/forgot-password', [AuthController::class, 'showForgotForm'])->name('password.forgot');
+Route::post('/forgot-password/verify', [AuthController::class, 'verifyEmail'])->name('password.verify');
+Route::post('/forgot-password/update', [AuthController::class, 'updatePassword'])->name('password.update');
+
 // Rutas protegidas (requieren login)
 Route::middleware('auth')->group(function () {
 
