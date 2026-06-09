@@ -123,12 +123,14 @@
                     <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-outline-warning btn-sm me-1">
                         <i class="fa-solid fa-pen"></i>
                     </a>
+                    @if(Auth::user()->role === 'admin')
                     <button type="button" class="btn btn-outline-danger btn-sm btn-eliminar"
                         data-id="{{ $cliente->id }}"
                         data-nombre="{{ $cliente->nombre }}"
                         data-tipo="cliente">
-                        <i class="fa-solid fa-trash"></i>
+                            <i class="fa-solid fa-trash"></i>
                     </button>
+                    @endif
                 </td>
             </tr>
             @empty
