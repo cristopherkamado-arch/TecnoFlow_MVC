@@ -184,7 +184,7 @@
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                 <div class="card login-card">
                     <div class="card-body text-center">
-                        <div class="logo-box"><i class="bi bi-lightning-fill"></i></div>
+                        <div class="logo-box"><i class="bi bi-lightning-fill text-white"></i></div>
                         
                         <h1 class="brand-title">TecnoFlow MVC</h1>
                         <p class="brand-subtitle">TecnoSoluciones S.A.</p>
